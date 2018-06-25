@@ -1,0 +1,171 @@
+\documentclass[twocolumn]{article}
+%\documentclass{article}
+% Margenes----------------------------------------------------------
+\textheight = 24cm
+\textwidth = 18.5cm % Ancho
+\topmargin = -2.5cm
+\oddsidemargin = -1cm
+\parindent = 0mm % Sin sangr????a
+%Paquetes adicionales-----------------------------------------------
+%Otra opcin para m????rgenes,etc., es el paquete geometry.
+%\usepackage[total={18cm,21cm},top=2cm, left=2cm]{geometry}
+\usepackage{latexsym,amsmath,amssymb,amsfonts}
+%\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage[spanish, activeacute]{babel} %Definir idioma español
+\usepackage[utf8]{inputenc} %Codificacion utf-8
+%\usepackage[lined,boxed]{algorithm2e}
+%\usepackage[linesnumbered]{algorithm2e}
+
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{algorithmic}
+%\usepackage[spanish]{babel} % Idioma espa????ol
+\renewcommand{\baselinestretch}{1.1} % espaciado 1.1
+\pagestyle{myheadings}
+
+% \markright{...... texto .......}
+%-------------------------------------------------------------------
+\begin{document} 
+
+%titulo
+\title{
+Cálculo del ranking de los países sudamericanos que participaron en las eliminatorias para el mundial Rusia 2018 usando el algoritmo PageRank
+}
+\date{}
+\author{Alex Avila, Bazalar Rommel,Konrad Trejo\\
+\small{\texttt{\@aavilas@uni.pe, rbazalarc@uni.pe,konrad.trejo.c@uni.pe}}}
+\maketitle
+
+%Seccion Introduccion
+\section{Introducción}
+
+	El objetivo de este proyecto es lograr un ranking parecido al de FIFA, pero solo con las selecciones sudamericanas tomando en cuenta los partidos de la eliminatoria para el mundial Rusia 2018.
+
+	Con el fin de cumplir el objetivo mencionado, surge la idea de la creación de un nuevo ranking basándonos en el método de PageRank (generado por Larry Page y Sergey Brin), generando así un nuevo ranking en que se destacan los países sudamericanos.
+
+	Basándonos en un historial de los partidos, nos proponemos evaluar cómo se comporta el nuevo método creado en comparación de otros rankings existentes y así observar cual de los métodos disponibles refleja mejor la realidad.
+
+	Una vez obtenido el ranking, nos proponemos a, dado un partido, evaluar el ranking de los países que lo disputan  así poder indicar con que probabilidad saldrá victorioso el equipo con mejor posicionamiento. Para lograr todo esto tendrémos que usar nuestros conocimientos en el curso de Probabilidades y también aprovechar nuestro conocimiento en el lenguaje R.
+
+% La bibliografia se encuentra de el archivo 
+ %bibliografia.bib adjunto en los\archivos
+
+%Seccion estado del arte
+\section{Estado del arte}
+\begin{itemize}
+	\item
+	"TenisRank: Un Nuevo Ranking De Jugadores De Tenis
+basado en PageRank", Analizan un nuevo ranking de jugadores de tenis debido a las críticas existentes del ranking actual, para esto utilizan el famoso algoritmo de google "PageRank".
+	\item
+	"PageRank Approach to Ranking National Football Teams". Analizan los datos disponibles sobre los campeonatos mundiales de fútbol desde 1930 hasta hoy. Cuyo objetivo es clasificar los equipos nacionales en función de todos los partidos durante los campeonatos. Para este propósito, aplican el PageRank creado a partir de los juegos jugados durante los torneos. 
+	\end{itemize}	
+%seccion Diseño del experimento
+\section{Diseño del experimento}
+\subsection{Objetos ,funciones y técnicas utilizadas}
+\begin{itemize}
+	\item
+	Vectores : Son una de las unidades básicas de trabajo en R y muchos de los
+métodos de trbajo con este tipo de objetos se aplica para otras clases de
+objetos. Por ejemplo, casi todos los objetos pueden ser indexados usando [ ].
+	Un vector es una colección de uno o más objetos del mismo tipo (
+caracteres, números,etc); esta es una restricción importante a la hora de crear
+un vector, como veremos más adelante.
+	\item
+	Matrices : Una matrix es un array con dos dimensiones. Tienen una
+funcionalidad muy parecida, pero matrix es más cómoda.
+	\item
+    Plot  : La función plot es una función genérica para la representación gráfica de objetos en R. Los gráficos más sencillos que permite generar esta función son nubes de puntos (x,y).
+    \item 
+    Grafos con Igraph : El paquete para R Igraph, necesita que se le presenten los datos de la matriz de adyacencia por parejas. Es decir, una matriz de doble entrada convencional (o sociomatriz o tabla de confundido o tabla de concordancia o como la quieran llamar) ha de pasarse al formato de Igraph
+    \item
+    Eigen : Calcula valores propios y vectores propios de matrices numéricas (dobles, enteras, lógicas) o complejas.\\ \\ \\ \\ \\ \\
+	\end{itemize}	
+%Subseccion Experimentos y resultados
+\section{Experimentos y resultados}
+
+\begin{itemize}
+	\item
+Línea base :\\ \\
+    \begin{tabular}{|l|l|}
+	\hline
+País & Ranking por FIFA \\
+\hline \hline
+Brasil & 1\\ \hline
+Uruguay & 2 \\ \hline
+Argentina & 3 \\ \hline
+Colombia & 4 \\ \hline
+Perú & 5 \\ \hline
+Chile & 6 \\ \hline
+Paraguay & 7 \\ \hline
+Ecuador & 8 \\ \hline
+Venezuela & 9 \\ \hline
+Bolivia & 10 \\ \hline
+\end{tabular}
+	\item
+Evaluación del rendimiento de los modelos ensayados: \\
+
+	\begin{tabular}{|l|l|}
+	\hline
+País & Ranking por PageRank\\
+\hline \hline
+Brasil & 0.4738853 \\ \hline
+Argentina & 0.3793522 \\ \hline
+Uruguay & 0.3731390\\ \hline
+Bolivia & 0.3616417 \\ \hline
+Colombia & 0.3153363 \\ \hline
+Perú & 0.2846076 \\ \hline
+Paraguay & 0.2669837 \\ \hline
+Chile & 0.2163052 \\ \hline
+Ecuador & 0.1977172 \\ \hline
+Venezuela & 0.1546235 \\ \hline
+\end{tabular}
+    \item
+    Comparación de línea base y resultados propios : 
+	\end{itemize}	
+
+%\subsection{Ejemplo de subsecuencia}
+
+%Ejemplo de secuencias $X_{1}$,$X_{2}$, . . ., $X_{m}$
+
+%Ejemplo de sumatoria
+%\[O(
+%\sum_{k=1}^{n}p_{k}log(1/p_{k}))
+%\]
+% Ejemplo de O grande
+%\begin{center}
+% O(log($min_{i<j}$(|$x_{i}$| + $t_{i}$ + 2)))    
+%\end{center}
+
+\section{Discusión}
+
+-Interpretación de los resultados obtenidos.
+
+-¿Cómo podría ser mejorado sus resultados?
+
+%\begin{figure}
+
+%	\includegraphics[width=0.5\textwidth]{zigzag.png}
+%	\caption{Movimientos zig-zig y zig-zag}\label{FI1_2}
+%\end{figure}
+
+
+%\begin{figure}[h!]
+%	\centering
+%	\includegraphics[width=0.5\textwidth]{toques.png}
+%	\caption{Gr\'afica de elementos del \'arbol versus recorridos por el algoritmo al buscarlos}\label{FI1_3}
+%\end{figure}
+
+
+\section{Conclusiones y trabajos futuros}
+Conclusiones del proyecto
+\section{Bibliografía}
+
+%Biliografia************************
+%\bibliographystyle{apalike}
+\nocite{*}
+\bibliographystyle{apalike}
+\bibliography{<1>,}
+
+%Fin del documento
+\end{document}
