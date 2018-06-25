@@ -56,30 +56,27 @@ Cálculo del ranking de los países sudamericanos que participaron en las elimin
 \begin{itemize}
 	\item
 	"TenisRank: Un Nuevo Ranking De Jugadores De Tenis
-basado en PageRank", Analizan un nuevo ranking de jugadores de tenis debido a las críticas existentes del ranking actual, para esto utilizan el famoso algoritmo de google "PageRank".
+basado en PageRank", Analizan un nuevo ranking de jugadores de tenis debido a las críticas existentes del ranking actual. Para esto utilizan el famoso algoritmo de google "PageRank".
 	\item
-	"PageRank Approach to Ranking National Football Teams". Analizan los datos disponibles sobre los campeonatos mundiales de fútbol desde 1930 hasta hoy. Cuyo objetivo es clasificar los equipos nacionales en función de todos los partidos durante los campeonatos. Para este propósito, aplican el PageRank creado a partir de los juegos jugados durante los torneos. 
+	"PageRank Approach to Ranking National Football Teams". Analizan los datos disponibles sobre los campeonatos mundiales de fútbol desde 1930 hasta hoy. El objetivo del paper es clasificar los equipos nacionales en función de todos los partidos durante los campeonatos. Para este propósito, aplican el PageRank creado a partir de los partidos jugados durante los torneos. 
 	\end{itemize}	
 %seccion Diseño del experimento
 \section{Diseño del experimento}
-\subsection{Objetos ,funciones y técnicas utilizadas}
+\subsection{Objetos, funciones y técnicas utilizadas}
 \begin{itemize}
 	\item
-	Vectores : Son una de las unidades básicas de trabajo en R y muchos de los
-métodos de trbajo con este tipo de objetos se aplica para otras clases de
-objetos. Por ejemplo, casi todos los objetos pueden ser indexados usando [ ].
+	Vectores : Son una de las unidades básicas de trabajo en R y muchos de los métodos de trabajo con este tipo de objetos se aplica para otras clases deobjetos. Por ejemplo, casi todos los objetos pueden ser indexados usando [ ].
 	Un vector es una colección de uno o más objetos del mismo tipo (
-caracteres, números,etc); esta es una restricción importante a la hora de crear
-un vector, como veremos más adelante.
+caracteres, números,etc); esta es una restricción importante a la hora de crear un vector.
 	\item
 	Matrices : Una matrix es un array con dos dimensiones. Tienen una
-funcionalidad muy parecida, pero matrix es más cómoda.
+funcionalidad muy parecida a la del vector.
 	\item
     Plot  : La función plot es una función genérica para la representación gráfica de objetos en R. Los gráficos más sencillos que permite generar esta función son nubes de puntos (x,y).
     \item 
-    Grafos con Igraph : El paquete para R Igraph, necesita que se le presenten los datos de la matriz de adyacencia por parejas. Es decir, una matriz de doble entrada convencional (o sociomatriz o tabla de confundido o tabla de concordancia o como la quieran llamar) ha de pasarse al formato de Igraph
+    Grafos con Igraph : El paquete para R Igraph, necesita que se le presenten los datos de la matriz de adyacencia por parejas. Es decir, una matriz de doble entrada convencional (también llamada sociomatriz, tabla de confundido o tabla de concordancia) ha de pasarse al formato de Igraph.
     \item
-    Eigen : Calcula valores propios y vectores propios de matrices numéricas (dobles, enteras, lógicas) o complejas.\\ \\ \\ \\ \\ \\
+    Eigen : Calcula valores propios y vectores propios de matrices numéricas (dobles, enteras, lógicas) o complejas.\\ \\ \\ \\ \\ \\ \\ \\
 	\end{itemize}	
 %Subseccion Experimentos y resultados
 \section{Experimentos y resultados}
@@ -105,23 +102,25 @@ Bolivia & 10 \\ \hline
 	\item
 Evaluación del rendimiento de los modelos ensayados: \\
 
-	\begin{tabular}{|l|l|}
+	\begin{tabular}{|l|l|l|}
 	\hline
-País & Ranking por PageRank\\
-\hline \hline
-Brasil & 0.4738853 \\ \hline
-Argentina & 0.3793522 \\ \hline
-Uruguay & 0.3731390\\ \hline
-Bolivia & 0.3616417 \\ \hline
-Colombia & 0.3153363 \\ \hline
-Perú & 0.2846076 \\ \hline
-Paraguay & 0.2669837 \\ \hline
-Chile & 0.2163052 \\ \hline
-Ecuador & 0.1977172 \\ \hline
-Venezuela & 0.1546235 \\ \hline
+Ranking & País  & PageRank\\
+\hline \hline \hline
+1&Brasil & 0.4738853  \\ \hline
+2&Uruguay & 0.3731390  \\ \hline
+3&Argentina & 0.3793522  \\ \hline
+4&Colombia & 0.3153363  \\ \hline
+5&Perú & 0.2846076  \\ \hline
+6&Chile & 0.2163052 \\ \hline
+7&Paraguay & 0.2669837  \\ \hline
+8&Ecuador & 0.1977172 \\ \hline
+9&Venezuela & 0.1546235 \\ \hline
+10&Bolivia & 0.3616417  \\ \hline
+
 \end{tabular}
     \item
-    Comparación de línea base y resultados propios : 
+    Comparación de línea base y resultados propios :\\ 
+ Podemos ver que el primer puesto lo ocupa Brasil en ambos ranking's. El segundo puesto y tercer puesto sí han cambiado con respecto del Ranking FIFA, en el que Uruguay y Argentina los ocupan respectivamente; en cambio, con el algoritmo PageRank, Argentina y Uruguay ocupan esos puestos respectivamente. En el cuarto puesto sí hay un gran cambio pues Bolivia ascendió del último puesto en el Ranking FIFA al cuarto puesto en el de PageRank. Otro cambio más sería que Paraguay está por encima de Chile en el nuevo Ranking desarrollado con PageRank .
 	\end{itemize}	
 
 %\subsection{Ejemplo de subsecuencia}
@@ -138,11 +137,16 @@ Venezuela & 0.1546235 \\ \hline
 %\end{center}
 
 \section{Discusión}
+Interpretación de los resultados obtenidos.
+\begin{itemize}
+\item El cambio más notorio se nota en Bolivia, esto se debe porqué Bolivia le ganó o empató a países con pagerank altos, entonces su pagerank subirá considerablemente. Acá no solo se considerá partidos ganados sino también a quién gana. 
+\end{itemize}
+¿Cómo podría ser mejorado sus resultados?
+\begin{itemize}
+\item Una mayor cantidad de datos mejoraría la precisión de nuestros resultados, obviamente; aún así, es importante señalar que actualmente no se puede realizar un análisis completo de la eficacia del algoritmo, dado que la muestra de todos los equipos sudamericanos es muy pequeña, por lo tanto se necesitaría su desempeño a través de los años en eliminatorias y copas mundiales para compensar.
 
--Interpretación de los resultados obtenidos.
-
--¿Cómo podría ser mejorado sus resultados?
-
+\end{itemize}
+ 
 %\begin{figure}
 
 %	\includegraphics[width=0.5\textwidth]{zigzag.png}
@@ -158,14 +162,30 @@ Venezuela & 0.1546235 \\ \hline
 
 
 \section{Conclusiones y trabajos futuros}
-Conclusiones del proyecto
+
+Al inicio del paper se identificó una problemática con la metodología con la cual se obtiene el ranking oficial de la Fifa. Para solucionar esta problemática, hemos desarrollado un algoritmo de clasificación basado en PageRank, aunque no se aplicó a todos los equipos nacionales clasificados en el mundial, sino que se redujo la muestra a tan solo los paises sudamericanos.
+Una vez obtuvimos nuestra propia clasificación, se pasó a compararla con el ranking de la FIFA y se determino una gran similitud, excepto en un caso especial de gran desviación (Bolivia).
+Se concluye que el algoritmo presentado tiene gran potencial, y es capaz de reproducir los resultados de otros métodos de clasificación que poseen más data con la que determinar sus resultados. \\
+En el futuro se puede extender este proyecto para calcular un ranking con los paises en su totalidad y considerando como antecedentes unos 15-20 años de historia.
+
+
 \section{Bibliografía}
-
-%Biliografia************************
-%\bibliographystyle{apalike}
-\nocite{*}
-\bibliographystyle{apalike}
-\bibliography{<1>,}
-
+\begin{itemize}
+\item http://es.fifa.com/worldcup/preliminaries/index.html
+\item 
+M. Eisermann, Comment Google classe les pages webb,
+http://images.math.cnrs.fr/Comment-Google-classe-les-pages.html, 2009.
+\item 
+A.N. Langville and C. D. Meyer, A Survey of Eigenvector Methods
+for Web Information Retrieval, SIAM Review, Volume 47, Issue 1,
+(2005), pp. 135–161.
+\item
+http://www.economicas.uba.ar/wp-content/uploads/2016/04/2-¿Cómo-funciona-google-el-algoritmo-pagerank-diagramas-de-grafos-y-cadenas-de-markov.-Juan-Manuel-Barriola-y-Milena-Dotta-2.pdf
+\item
+https://www.youtube.com/watch?v=u8HtO7Gd5q0
+\item
+C. Rousseau and Y. Saint-Aubin, Mathematics and
+technology, SUMAT Series, Springer-Verlag, 2008.
+\end{itemize}
 %Fin del documento
 \end{document}
